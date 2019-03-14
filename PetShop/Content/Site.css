@@ -53,12 +53,41 @@ h2{
     text-align: center;
     width: 520px;
 }
-/*=========================Thumbnail Sản Phẩm ===========================
 
-*/
-.wrap-thumb{
+.nav-left{
+    border:1px solid #f1b306;
+    border-radius:10px;
+    height:auto;
+    width:220px;
+    position :fixed;
+    top:215px;
+    left:10px;
+
+}
+    .nav-left > ul {
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0px;
+        list-style-type: none;
+    }
+    .nav-left > ul > li:last-child{
+       border-bottom :0px none;
+       
+    }
+   .nav-left > ul > li:first-child {
+            margin-top: 15px;
+            border-bottom: 1px dashed #f1b306;
+   }
+    .nav-left > ul > li{
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #f1b306;
+        padding-left : 15px;
+    }
+       /*=========================Thumbnail Sản Phẩm ===========================*/
+        .wrap-thumb {
     margin: 10px;
-    float:left;
+    float: left;
     width: 220px;
     height: 330px;
     border-color: #f1b306;
