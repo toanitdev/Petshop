@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Models.Framework.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Shipper/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tất cả đơn</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sdt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.method)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>Công cụ</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sdt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.method)
+        </td>
+        <td>
+            @{
+                switch (item.Status)
+                {
+                    case 1:
+                        {
+                            Write("Chưa xữ lý");
+
+                            break;
+                        }
+                    case 2:
+                        {
+                            Write("Đang xữ lý");
+                            break;
+                        }
+                    case 3:
+                        {
+                            Write("Đang Giao");
+                            break;
+                        }
+                    case 4:
+                        {
+                            Write("Đã giao");
+                            break;
+                        }
+                    case 5:
+                        {
+                            Write("Đã hủy");
+                            break;
+                        }
+
+                }
+            }
+        </td>
+        <td class="center">
+            @Html.ActionLink("Giao", "Giao", "Home", new { @id = item.OrderID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Hủy", "Huy", "Home", new { @id = item.OrderID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Xem", "Details", "Home", new { @id = item.OrderID }, new { @class = "btn btn-primary" })
+
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,21 @@
+﻿@model Models.Framework.Product
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table style="width:100%">
+    <tr>
+        <th>Mã :</th>
+        <td>@Model.ID</td>
+    </tr>
+    <tr>
+        <th>Tên:</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Giá:</th>
+        <td>@Model.Price</td>
+    </tr>
+</table>
+

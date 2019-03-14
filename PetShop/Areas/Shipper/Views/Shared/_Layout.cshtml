@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+    <!-- BT-->
+    <link href="~/Assets/Admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        div.nav > ul {
+            list-style-type: none;
+        }
+        div.nav > ul > li {
+            margin-top :10px;
+        }
+        .content{
+            width:800px;
+            margin-left:auto;
+            margin-right:auto;
+       
+        }
+    </style>
+
+</head>
+<body>
+    <div class="content">
+        <div class="nav">
+            <ul>
+                <li>@Html.ActionLink("Đơn hàng đã giao", "DonDaGiao", "", new { @class = "btn btn-primary" })</li>
+                <li>@Html.ActionLink("Đơn Chưa giao", "DonChuaGiao", "", new { @class = "btn btn-primary" })</li>
+                <li>@Html.ActionLink("Tất cả đơn", "Index", "", new { @class = "btn btn-primary" })</li>
+
+            </ul>
+        </div>
+
+        @RenderBody()
+    </div>
+</body>
+</html>

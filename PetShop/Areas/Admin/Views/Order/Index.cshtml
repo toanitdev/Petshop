@@ -1,0 +1,84 @@
+﻿@model List<Models.Framework.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="panel-body">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Mã hóa đơn</th>
+                <th>Mã khách hàng</th>
+                <th>Địa chỉ ship</th>
+                <th>Email</th>
+                <th>Nhân viên giao</th>
+                <th>Trạng thái</th>
+                <th>Phương thức thanh toán</th>
+                <th>Công Cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr class="odd gradeX" id="row_@item.OrderID">
+                <td> @Html.ActionLink(item.OrderID.ToString(), "Details", new { id = item.OrderID })</td>
+                <td>@item.CustomerID</td>
+                <td>@item.ShipAddress</td>
+                <td>@item.ShipEmail</td>
+                <td>@item.Username</td>
+
+                <td>
+                    @{
+                        switch (item.Status)
+                        {
+                            case 1:
+                                {
+                                    Write("Chưa xữ lý");
+
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    Write("Đang xữ lý");
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    Write("Đang Giao");
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    Write("Đã giao");
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    Write("Đã hủy");
+                                    break;
+                                }
+
+                        }
+                    }
+                </td>
+                <td>@item.method</td>
+
+                <td class="center">
+                    @Ajax.ActionLink("Xóa", "Delete",new {@id=item.OrderID}, new AjaxOptions
+                    {
+                          Confirm = "Bạn có muốn xóa bản ghi này",
+                          OnComplete ="$('#row_"+@item.OrderID+"').remove()",
+                          HttpMethod ="Delete"
+                    })
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.OrderID })
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+    @Html.ActionLink("Thêm", "Create", "Order", new { @class = "btn btn-primary" })
+</div>

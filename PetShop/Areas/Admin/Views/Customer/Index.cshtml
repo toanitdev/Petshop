@@ -1,0 +1,46 @@
+﻿@model List<Models.Framework.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="panel-body">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>MÃ</th>
+                <th>Tên</th>
+                <th>Họ</th>
+                <th>Địa chỉ</th>
+                <th>Email</th>
+                <th>Công Cụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr class="odd gradeX" id="row_@item.CustomerID">
+                <td>@item.CustomerID</td>
+                <td>@item.LastName</td>
+                <td>@item.FirstName</td>
+                <td>@item.Address</td>
+                <td>@item.Email</td>               
+                <td class="center">
+                @Ajax.ActionLink("Xóa", "Delete",new {@id=item.CustomerID}, new AjaxOptions
+                {
+                      Confirm = "Bạn có muốn xóa bản ghi này",
+                      OnComplete ="$('#row_"+@item.CustomerID+"').remove()",
+                      HttpMethod ="Delete"
+                })   
+                @Html.ActionLink("Sửa", "Edit", new { id = item.CustomerID })
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+    @Html.ActionLink("Thêm", "Create", "Customer", new { @class = "btn btn-primary" })
+   
+</div>

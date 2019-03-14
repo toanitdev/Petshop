@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Models.Framework.Order>
+
+@{
+    ViewBag.Title = "Lịch sử đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lịch sử đặt hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipEmail)
+        </td>
+        <td>
+            @{
+                switch (item.Status)
+                {
+                    case 1:
+                        {
+                            Write("Chưa xữ lý");
+
+                            break;
+                        }
+                    case 2:
+                        {
+                            Write("Đang xữ lý");
+                            break;
+                        }
+                    case 3:
+                        {
+                            Write("Đang Giao");
+                            break;
+                        }
+                    case 4:
+                        {
+                            Write("Đã giao");
+                            break;
+                        }
+                    case 5:
+                        {
+                            Write("Đã hủy");
+                            break;
+                        }
+
+                }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Thông tin", "Details", new { id=item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>

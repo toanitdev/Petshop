@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+    <!-- BT-->
+    <link href="~/Assets/Admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <header class="header">
+        <div class="hotline-top">
+           Hỗ trợ đặt hàng, mua hàng và tư vấn - Hotline: (028) 73 04 9999
+        </div>
+        <div class="header-content">
+            <div class="logo-shop"></div>
+            <div class="title-web"> OU SHOP PET</div>
+            <div style="float: left;height: 100%;">
+                <span style="float: left;margin-top: 130px; ">
+                    @using PetShop.Common;
+                    @{
+                        int num =0;
+                        var userLogin = Session[CommonConstants.CUSTOMER_SESSION];
+                        if (userLogin == null)
+                        {
+                            <b>@Html.ActionLink("Đăng Nhập", "Index", "Login", "", new { @style = "color:white;" }) </b>
+                        }
+                        else
+                        {
+                            <b>@Html.ActionLink("Thông tin khách hàng", "Index", "CustomerInfo", "", new { @style = "color:white;" }) </b>
+                        }
+                        if (Session["CartSession"]!=null)
+                        {
+                           num = ((List<PetShop.Models.CartItem>)Session["CartSession"]).Count();
+
+                        }
+                    }
+
+                    |
+                    <b>@Html.ActionLink("Đăng Ký", "Create", "SignUp", "", new { @style = "color:white;" }) </b>
+                    |
+                    <b>@Html.ActionLink("Giỏ hàng("+num+")", "Index", "Cart", "", new { @style = "color:white;" }) </b>
+                </span>
+            </div>
+        </div>
+    </header>
+    <div class="body-content">
+        @RenderBody()
+    </div>
+</body>
+</html>

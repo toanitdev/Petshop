@@ -1,0 +1,23 @@
+﻿@model List<Models.Framework.Product>
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{int i = 1;}
+@foreach (var item in Model)
+{
+    @:
+    <div class="wrap-thumb">
+        <img width="200" height="200" src="@item.Image" style="margin:10px;" />
+        <div class="product-name">
+            <h2 style=" font-size :1em;margin:0px;">@item.Name</h2>
+            <h2 style=" font-size :1em;margin:0px; color:red;">
+                @item.Price VND</h2>
+</div>
+        <div class="btn-orange"><a style="color:white;text-decoration:none" href="/Cart/AddItem?productId=@item.ID&quantity=1">Add Cart</a></div>
+        <div class="btn-blue"><a style="color:white;text-decoration:none" href="/ProductDetail/Index?productId=@item.ID">View</a></div>
+    </div>
+    i++;
+}
+
