@@ -286,8 +286,10 @@
     <Content Include="Content\Image\7.jpg" />
     <Content Include="Content\Image\8.jpg" />
     <Content Include="Content\Image\9.jpg" />
+    <Content Include="Content\Image\Animated-hero-1000x200.gif" />
     <Content Include="Content\Image\pet-logo.png" />
     <Content Include="Content\Image\success.png" />
+    <Content Include="Content\Image\totop.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
