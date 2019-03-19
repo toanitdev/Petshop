@@ -4,18 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table style="width:100%">
-    <tr>
-        <th>Mã :</th>
-        <td>@Model.ID</td>
-    </tr>
-    <tr>
-        <th>Tên:</th>
-        <td>@Model.Name</td>
-    </tr>
-    <tr>
-        <th>Giá:</th>
-        <td>@Model.Price</td>
-    </tr>
-</table>
+<div style="height:auto;">
+    <div style="float:left;width:30%; border:3px solid #b6ff00;  border-radius:10px;"><img style=" border-radius:10px;" src="@Model.Image" width="100%"></div>
+    <div style="float:left; width:70%;height:100%;">
+        <ul>
+            <li>Mã    :  @Model.ID </li>
+            <li>Tên   :  @Model.Name</li>
+            <li style="color: red">Giá   :  @string.Format("{0:#,###}", Model.Price) VNĐ</li>
+            <li>Mô tả :  @Model.Detail</li>
+            <div class="btn-orange"><a style="color:white;text-decoration:none" href="/Cart/AddItem?productId=@Model.ID&quantity=1">Add Cart</a></div>
+
+        </ul>
+    </div>
+</div>
 

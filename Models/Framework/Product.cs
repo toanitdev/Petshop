@@ -19,7 +19,7 @@
 
         [StringLength(50)]
         public string Alias { get; set; }
-        
+
         [Display(Name = "Loại hàng")]
         public int? Category { get; set; }
 

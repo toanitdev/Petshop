@@ -22,7 +22,7 @@
                 <span style="float: left;margin-top: 130px; ">
                     @using PetShop.Common;
                     @{
-                        int num =0;
+                        int num = 0;
                         var userLogin = Session[CommonConstants.CUSTOMER_SESSION];
                         if (userLogin == null)
                         {
@@ -30,11 +30,12 @@
                         }
                         else
                         {
-                            <b>@Html.ActionLink("Thông tin khách hàng", "Index", "CustomerInfo", "", new { @style = "color:white;" }) </b>
+                            <b>@Html.ActionLink(((UserLogin)userLogin).UserName+",", "Index", "CustomerInfo", "", new { @style = "color:white;" }) </b>
+                            <b>@Html.ActionLink("Đăng xuất", "Index", "Logout", "", new { @style = "color:white;" }) </b>
                         }
-                        if (Session["CartSession"]!=null)
+                        if (Session["CartSession"] != null)
                         {
-                           num = ((List<PetShop.Models.CartItem>)Session["CartSession"]).Count();
+                            num = ((List<PetShop.Models.CartItem>)Session["CartSession"]).Count();
 
                         }
                     }
@@ -42,24 +43,24 @@
                     |
                     <b>@Html.ActionLink("Đăng Ký", "Create", "SignUp", "", new { @style = "color:white;" }) </b>
                     |
-                    <b>@Html.ActionLink("Giỏ hàng("+num+")", "Index", "Cart", "", new { @style = "color:white;" }) </b>
+                    <b>@Html.ActionLink("Giỏ hàng(" + num + ")", "Index", "Cart", "", new { @style = "color:white;" }) </b>
                 </span>
             </div>
         </div>
     </header>
     <div class="nav-left">
         <ul>
-            <li>Thú cưng</li>
-            <li>Thực Phẩm</li>
-            <li>Đồ chơi</li>
-            <li>Chuồng trại</li>
+            <li>@Html.ActionLink("Trang Chủ","Index","Home")</a></li>
+            <li><a href="#">Thú cưng</a></li>
+            <li><a href="#">Thực Phẩm</a></li>
+            <li><a href="#">Đồ chơi</a></li>
+            <li><a href="#">Chuồng trại</a></li>
         </ul>
     </div>
     <div style="background-image:url(../../Content/Image/Animated-hero-1000x200.gif);max-width:1000px; height:200px;margin-left: auto;margin-right: auto; margin-top:10px;"></div>
     <div class="body-content">
         @RenderBody()
     </div>
-    <a href="#top" style="background-image:url(../../Content/Image/totop.png); right:5px;bottom:5px; width:100px; height:100px;">asd</a>
-
+  
 </body>
 </html>

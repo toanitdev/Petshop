@@ -11,13 +11,18 @@ namespace PetShop.Controllers
     public class CofirmAccCusController : Controller
     {
         // GET: CofirmAccCus
-        
+
         public ActionResult Index(string code)
         {
-            string x =  Vigenere.DeCode(code);
+            string x = Vigenere.DeCode(code);
             CustomerModel model = new CustomerModel();
             model.Active(x.ToString().ToLower());
-            
+
+            return RedirectToAction("ConfirmSuccess", "CofirmAccCus");
+        }
+
+        public ActionResult ConfirmSuccess(string code)
+        {
             return View();
         }
     }

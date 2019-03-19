@@ -13,10 +13,13 @@
 
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Tài khoản")]
+        [MaxLength(32)]
+        [MinLength(6)]
         public string CustomerID { get; set; }
 
         [StringLength(32)]
-
+        [MinLength(6)]
+        [MaxLength(32)]
         [Required(ErrorMessage = "Không được để trống")]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
@@ -37,10 +40,12 @@
         public string Address { get; set; }
 
         [StringLength(50)]
+        [EmailAddress]
         [Required(ErrorMessage = "Không được để trống")]
         public string Email { get; set; }
 
         [StringLength(50)]
+        [Phone]
         [Required(ErrorMessage = "Không được để trống")]
         public string sdt { get; set; }
 

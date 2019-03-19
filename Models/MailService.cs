@@ -45,15 +45,15 @@ namespace Models
         {
             MailMessage mail = new MailMessage();
             mail.To.Add(address);
-            mail.From = new MailAddress("toanitdev@gmail.com");
-            mail.Subject = "Đơn Hàng OU Pet Shop";
+            mail.From = new MailAddress("mailchatbot0099@gmail.com");
+            mail.Subject = "OU Pet Shop";
             mail.Body = Body.ToString();// phần thân của mail ở trên
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.UseDefaultCredentials = true;
-            smtp.Credentials = new System.Net.NetworkCredential("toanitdev@gmail.com", "0913876379");// tài khoản Gmail của bạn
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("mailchatbot0099@gmail.com", "Toan123456");// tài khoản Gmail của bạn
             smtp.EnableSsl = true;
             smtp.Send(mail);
 

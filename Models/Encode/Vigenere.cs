@@ -16,7 +16,7 @@ namespace Models.Encode
             string b = "";
             string decode = "";
             string key = "TOAN";
-            string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string beta = "";
             bool x = true;
             int temp = 0;
@@ -54,13 +54,13 @@ namespace Models.Encode
             }
             for (int i = 0; i < t.Length; i++)
             {
-                if ((numArray[i] + numArray2[i]) >= 26)
+                if ((numArray[i] + numArray2[i]) >= 36)
                 {
-                    numArray3.Add((numArray[i] + numArray2[i]) % 26);
+                    numArray3.Add((numArray[i] + numArray2[i]) % 36);
                 }
                 else
                 {
-                    if ((numArray[i] + numArray2[i]) < 26)
+                    if ((numArray[i] + numArray2[i]) < 36)
                     {
                         numArray3.Add((numArray[i] + numArray2[i]));
                     }
@@ -82,7 +82,7 @@ namespace Models.Encode
             string b = "";
             string decode = "";
             string key = "TOAN";
-            string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string beta = "";
             bool x = true;
             int temp = 0;
@@ -128,7 +128,7 @@ namespace Models.Encode
                 {
                     if ((numArray[i] - numArray2[i]) < 0)
                     {
-                        numArray3.Add((numArray[i] - numArray2[i]) + 26);
+                        numArray3.Add((numArray[i] - numArray2[i]) + 36);
                     }
 
                 }

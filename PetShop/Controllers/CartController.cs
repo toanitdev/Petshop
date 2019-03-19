@@ -37,7 +37,7 @@ namespace PetShop.Controllers
             }
             else
             {
-                if(Session[Common.CommonConstants.CUSTOMER_SESSION]== null)
+                if (Session[Common.CommonConstants.CUSTOMER_SESSION] == null)
                 {
                     return RedirectToAction("Index", "Login");
                 }
@@ -60,7 +60,7 @@ namespace PetShop.Controllers
                 orders.Status = 1;
                 Order order = model.Insert(orders);
                 List<OrderDetail> list = new List<OrderDetail>();
-                foreach(PetShop.Models.CartItem item in ((List<PetShop.Models.CartItem>)cart))
+                foreach (PetShop.Models.CartItem item in ((List<PetShop.Models.CartItem>)cart))
                 {
                     OrderDetail o = new OrderDetail();
                     o.Quantity = item.Quantity;
@@ -70,23 +70,23 @@ namespace PetShop.Controllers
                     list.Add(o);
                 }
                 new OrderDetailsModel().InsertList(list);
-                MailService mailService = new MailService();
                 Customer customer = new CustomerModel().GetCustomer(order.CustomerID);
                 List<Models.CartItem> lm = new List<Models.CartItem>();
-                 lm =   (List<Models.CartItem>)cart;
-                mailService.SendMail(mailService.MailOrder(customer, order,lm), customer.Email);
+                lm = (List<Models.CartItem>)cart;
+                MailService mail = new MailService();
+                mail.SendMail(mail.MailOrder(customer, order, lm),customer.Email);
                 Session[CartSession] = null;
 
 
             }
-            return RedirectToAction("Success", "Home"); 
+            return RedirectToAction("Step1", "Cart");
         }
 
-            public ActionResult AddItem(int productID, int quantity)
+        public ActionResult AddItem(int productID, int quantity)
         {
             var product = new ProductModel().ViewDetail(productID);
             var cart = Session[CartSession];
-            if(cart != null)
+            if (cart != null)
             {
                 var list = (List<PetShop.Models.CartItem>)cart;
 
@@ -105,10 +105,10 @@ namespace PetShop.Controllers
                     var item = new PetShop.Models.CartItem();
                     item.Product = product;
                     item.Quantity = quantity;
-                  
+
                     list.Add(item);
 
-                  
+
                 }
                 Session[CartSession] = list;
             }
@@ -124,5 +124,7 @@ namespace PetShop.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult step1(){ return View(); }
     }
 }

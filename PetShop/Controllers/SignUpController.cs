@@ -48,7 +48,7 @@ namespace PetShop.Controllers
                             new AccountCustomer().Create(customer);
                             MailService mail = new MailService();
                             mail.SendMail(mail.MailSignUp(Vigenere.Encode(customer.CustomerID.ToUpper())), customer.Email);
-                            return RedirectToAction("Index","Home");
+                            return RedirectToAction("Success", "SignUp");
                         }
                         else
                         {
@@ -58,9 +58,10 @@ namespace PetShop.Controllers
                 }
                 else
                 {
-
+                    ModelState.AddModelError("", "Lỗi đăng ký");
                 }
-                return View();
+
+                return RedirectToAction("Index","Home");
             }
             catch
             {
@@ -110,6 +111,12 @@ namespace PetShop.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Success()
+        {
+            return View();
+
         }
     }
 }

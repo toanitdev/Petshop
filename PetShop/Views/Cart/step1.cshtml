@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "step1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quí khách đã đặt hàng thành công !</h2>
+<p> Quí khách nên thanh toán online trước 24h tới hoặc có thể chuyển khoản qua thông tin tài khoản sau :</p>
+<ul>
+    <li>STK : 12345678987654321</li>
+    <li>Người thụ hưởng : OU Information Team</li>
+    <li>Nội dung : [mã hóa đơn giao dịch] thanh toán hóa đơn</li>
+</ul>
+<br />
+<p>Sau 24h chúng tôi sẽ kiểm tra lần cuối nếu hóa đơn chưa được thanh toán chúng tôi sẽ chuyển sang hình thức COD.</p>
+<br />
+@Html.ActionLink("Thanh toán Online", "Index", "Home", new { @class = "btn btn-primary" })
+@Html.ActionLink("Hủy phiên","","", new { @class = "btn btn-danger" ,@href= "http://localhost:49987/api/Orders/Get?userForm=admin&pass=12345&value=194000000%20&idCodeTo=1952000151465254" })
+

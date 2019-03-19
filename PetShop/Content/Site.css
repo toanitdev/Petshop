@@ -51,14 +51,14 @@ h2{
     float: left;
     font-size: 4em;
     text-align: center;
-    width: 520px;
+    width: 450px;
 }
 
 .nav-left{
     border:1px solid #f1b306;
     border-radius:10px;
     height:auto;
-    width:220px;
+    width:160px;
     position :fixed;
     top:215px;
     left:10px;
